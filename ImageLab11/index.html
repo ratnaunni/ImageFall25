@@ -8,22 +8,19 @@
 <body>
   <a-scene>
      <a-assets>
-      <a-asset-item id="picnicblanket" src="assets/picnicblanket.gltf"></a-asset-item>
-            <a-asset-item id="table" src="assets/scene.gltf"></a-asset-item>
+      <a-asset-item id="table" src="assets/rustic_wooden_picnic_table_high-quality_3d_model/scene.gltf"></a-asset-item>
+      <a-asset-item id="picnicblanket" src="assets/picnic_gltf/scene.gltf"></a-asset-item>
+      <a-asset-item id="tree" src="assets/mango_tree/scene.gltf"></a-asset-item>
 
     </a-assets>
+  <a-entity gltf-model="#table" position="50 -10 -70"  scale=" 5 5 5 "></a-entity>
+  <a-entity gltf-model="#picnicblanket" position="-9.081 -5 -20"  ></a-entity>
+<a-entity gltf-model="#tree" position="25 -9 -70" scale = '15 30 10 '   ></a-entity>
 
-    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-    <a-sky color="#ECECEC"></a-sky>
+    <a-sky src="assets/picnicback.png"color="#ECECEC"></a-sky>
 
-    
-    <a-entity gltf-model="#picnicblanket"></a-entity>
-  <a-entity gltf-model="#picnicblanket" position="-9.081 0 -10"  color="black"></a-entity>
-  <a-entity gltf-model="#table" position="-9.081 0 -10"  color="black"></a-entity>
 
+  
    
   </a-scene>
 

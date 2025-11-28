@@ -18,6 +18,8 @@
       <a-asset-item id="sheep" src="assets/stuffed_sheep_toy_low_poly/scene.gltf"></a-asset-item>
       <a-asset-item id="toast" src="assets/toast_with_strawberry_jam/scene.gltf"></a-asset-item>
       <a-asset-item id="mouse" src="assets/cartoon_mouse_characters/scene.gltf"></a-asset-item>
+       <img id="snowflake" src="assets/flower_3.webp">
+
 
     </a-assets>
 
@@ -35,28 +37,37 @@
   </a-scene>
 </body>
 <script>
-  AFRAME.registerComponent('snowfall', {
+ AFRAME.registerComponent('snowfall', {
     init: function () {
       const scene = this.el;
-      const snowCount = 300; // number of snowflakes
+      const snowCount = 200;
+      const flakeSize = 0.7;
 
       for (let i = 0; i < snowCount; i++) {
-        const flake = document.createElement('a-sphere');
-        flake.setAttribute('radius', Math.random() * 0.1 + 0.05);
-        flake.setAttribute('color', '#FFFFFF');
-        flake.setAttribute('position', {
-          x: (Math.random() - 0.5) * 100,
-          y: Math.random() * 30 + 10,
-          z: (Math.random() - 0.5) * 100
-        });
+        const flake = document.createElement('a-image');
+        flake.setAttribute('src', '#snowflake');
+        flake.setAttribute('width', flakeSize);
+        flake.setAttribute('height', flakeSize);
+        flake.setAttribute('transparent', true);
 
-        // Animate falling
-        const duration = 4000 + Math.random() * 4000;
+        let x = (Math.random() - 0.5) * 100;
+        let y = Math.random() * 40 + 10;
+        let z = (Math.random() - 0.5) * 100;
+
+        flake.setAttribute('position', { x, y, z });
+
         flake.setAttribute('animation', {
           property: 'position',
-          to: `${flake.getAttribute('position').x} -20 ${flake.getAttribute('position').z}`,
-          dur: duration,
+          to: `${x} -20 ${z}`,
+          dur: 6000 + Math.random() * 3000,
           easing: 'linear',
+          loop: true
+        });
+
+        flake.setAttribute('animation__rotate', {
+          property: 'rotation',
+          to: `0 0 ${Math.random() * 360}`,
+          dur: 5000 + Math.random() * 2000,
           loop: true
         });
 

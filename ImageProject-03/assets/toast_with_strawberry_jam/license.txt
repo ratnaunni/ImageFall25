@@ -1,0 +1,8 @@
+Model Information:
+* title:	Toast with strawberry jam
+* source:	https://sketchfab.com/3d-models/toast-with-strawberry-jam-bdadb8da741c49308080d748b8d44d11
+* author:	Bagel (https://sketchfab.com/Green_Katydid)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

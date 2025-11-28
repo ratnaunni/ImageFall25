@@ -5,23 +5,65 @@
   <script src="https://aframe.io/releases/1.7.1/aframe.min.js"> </script>
 </head>
 
+
 <body>
+  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@latest/dist/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
   <a-scene>
-     <a-assets>
+    <a-assets>
       <a-asset-item id="table" src="assets/rustic_wooden_picnic_table_high-quality_3d_model/scene.gltf"></a-asset-item>
       <a-asset-item id="picnicblanket" src="assets/picnic_gltf/scene.gltf"></a-asset-item>
       <a-asset-item id="tree" src="assets/mango_tree/scene.gltf"></a-asset-item>
+      <a-asset-item id="sheep" src="assets/stuffed_sheep_toy_low_poly/scene.gltf"></a-asset-item>
+      <a-asset-item id="toast" src="assets/toast_with_strawberry_jam/scene.gltf"></a-asset-item>
+      <a-asset-item id="mouse" src="assets/cartoon_mouse_characters/scene.gltf"></a-asset-item>
 
     </a-assets>
-  <a-entity gltf-model="#table" position="50 -10 -70"  scale=" 5 5 5 "></a-entity>
-  <a-entity gltf-model="#picnicblanket" position="-9.081 -5 -20"  ></a-entity>
-<a-entity gltf-model="#tree" position="25 -9 -70" scale = '15 30 10 '   ></a-entity>
 
-    <a-sky src="assets/picnicback.png"color="#ECECEC"></a-sky>
+    <a-entity gltf-model="#table" position="50 -10 -70" scale=" 5 5 5 "></a-entity>
+    <a-entity gltf-model="#picnicblanket" position="-9.081 -5 -20"></a-entity>
+    <a-entity gltf-model="#tree" position="25 -9 -70" scale='15 30 10 '></a-entity>
+    <a-entity gltf-model="#sheep" position="-30 -5 -30" scale='10 10 10 'rotation="0 50 0"></a-entity>
+    <a-entity gltf-model="#toast" position="30 3 -55" scale='0.5 0.5 0.5' ></a-entity>
+    <a-entity gltf-model="#mouse" position="33 5 -53" scale='3 3 3' rotation="0 -30 0"></a-entity>
+    <a-sky src="assets/background2.png" color="#ECECEC"></a-sky>
+
+<a-entity snowfall></a-entity>
 
 
-  
-   
   </a-scene>
+</body>
+<script>
+  AFRAME.registerComponent('snowfall', {
+    init: function () {
+      const scene = this.el;
+      const snowCount = 300; // number of snowflakes
+
+      for (let i = 0; i < snowCount; i++) {
+        const flake = document.createElement('a-sphere');
+        flake.setAttribute('radius', Math.random() * 0.1 + 0.05);
+        flake.setAttribute('color', '#FFFFFF');
+        flake.setAttribute('position', {
+          x: (Math.random() - 0.5) * 100,
+          y: Math.random() * 30 + 10,
+          z: (Math.random() - 0.5) * 100
+        });
+
+        // Animate falling
+        const duration = 4000 + Math.random() * 4000;
+        flake.setAttribute('animation', {
+          property: 'position',
+          to: `${flake.getAttribute('position').x} -20 ${flake.getAttribute('position').z}`,
+          dur: duration,
+          easing: 'linear',
+          loop: true
+        });
+
+        scene.appendChild(flake);
+      }
+    }
+  });
+</script>
 
 </html>
